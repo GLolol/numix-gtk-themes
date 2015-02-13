@@ -11,3 +11,8 @@ dist
 *.iml
 
 unity/
+
+debian/files
+debian/numix-frost-theme
+*.substvars
+*.log
