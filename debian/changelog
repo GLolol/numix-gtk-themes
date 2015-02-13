@@ -1,0 +1,76 @@
+numix-gtk-theme (2016.05.21~utopia1) unstable; urgency=medium
+
+  * New upstream snapshot.
+  * Split sources into separate trees again.
+  * Make package native (Git snapshots lack tarballs).
+  * Build-depend on ruby-sass.
+  * Remove debian/install, not needed anymore.
+  * Set Standards version to 3.9.8.
+  * Refresh years on debian/copyright.
+  * rules: normalize permissions and remove debian/ folder from installed
+    file tree.
+
+ -- James Lu <bitflip3@gmail.com>  Sat, 21 May 2016 11:40:52 -0700
+
+numix-gtk-themes (2016.04.15+variations1) experimental; urgency=low
+
+  * New upstream snapshots.
+     - Added support for GTK 3.20.
+
+ -- James Lu <bitflip3@gmail.com>  Fri, 15 Apr 2016 09:58:45 -0700
+
+numix-gtk-themes (2016.03.17+variations1) unstable; urgency=medium
+
+  * Set source name to numix-gtk-themeS instead of numix-gtk-theme.
+  * New upstream Git snapshots (as of 17 Mar 2016).
+     - Numix Frost themes no longer provide a Cinnamon theme (this has
+       been moved to a separate source).
+  * Update debian/rules to compile Numix Frost themes with Sass.
+  * Update copyright information to include the right year and authors.
+  * Set standards version to 3.9.7.
+  * Update GTK dependencies to >= 3.16.
+  * Remove obsolete install and Lintian override files in debian/.
+
+ -- James Lu <bitflip3@gmail.com>  Thu, 17 Mar 2016 22:50:28 -0700
+
+numix-gtk-theme (2015.10.19+variations1) unstable; urgency=medium
+
+  * Update Numix Frost, Numix Frost Light to v2.5.2:
+    - Support for GTK+ 3.18.
+  * Update Numix snapshot to Git master (as of 19 Sep 2015).
+  * debian: add ruby-sass to build-deps, and rules to build Numix proper.
+
+ -- James Lu <bitflip3@gmail.com>  Mon, 19 Oct 2015 19:25:55 -0700
+
+numix-gtk-theme (2.5.1+variations4) unstable; urgency=medium
+
+  * Update Numix Frost, Numix, and Numix Frost Light snapshots.
+
+ -- James Lu <glolol1@hotmail.com>  Sat, 30 May 2015 19:21:42 -0700
+
+numix-gtk-theme (2.5.1+variations3) unstable; urgency=medium
+
+  * Update Numix Frost snapshot:
+     - Frost Light: fix window decoration colour
+     - fix overscroll colour
+
+ -- James Lu <glolol1@hotmail.com>  Sat, 16 May 2015 08:54:17 -0700
+
+numix-gtk-theme (2.5.1+variations2) unstable; urgency=medium
+
+  * Merge upstream Git master as of 10 May 2015.
+     - Add support for LightDM GTK Greeter 2.0.
+
+ -- James Lu <glolol1@hotmail.com>  Sun, 10 May 2015 21:37:34 -0700
+
+numix-gtk-theme (2.5.1+variations1) unstable; urgency=medium
+
+  * Import Numix Frost and Numix Frost Light variations.
+
+ -- James Lu <glolol1@hotmail.com>  Fri, 08 May 2015 22:28:26 -0700
+
+numix-gtk-theme (2.5.1-1) unstable; urgency=low
+
+  * Initial release.
+
+ -- James Lu <glolol@overdrive.pw>  Thu, 12 Feb 2015 20:28:56 -0800
