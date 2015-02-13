@@ -1,2 +1,7 @@
 # Ignore Backup Copies from Text Editor
 *~
+
+debian/files
+debian/numix-gtk-theme
+*.substvars
+*.log
