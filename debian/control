@@ -1,0 +1,22 @@
+Source: numix-gtk-theme
+Section: gnome
+Priority: optional
+Maintainer: James Lu <glolol1@hotmail.com>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.6
+Homepage: https://github.com/shimmerproject/Numix
+
+Package: numix-gtk-theme
+Architecture: all
+Depends: ${misc:Depends}, gtk2-engines-murrine, libgtk-3-0 (>= 3.14)
+Description: Numix GTK Theme
+ Numix is a modern flat theme with a combination of light and dark elements. 
+ It supports Gnome, Unity, XFCE and Openbox.
+
+Package: numix-frost-theme
+Architecture: all
+Depends: ${misc:Depends}, gtk2-engines-murrine, libgtk-3-0 (>= 3.14)
+Description: Numix themes - Antergos edition
+ Antergos' edition of the Numix themes.
+ .
+ This package also includes themes for GNOME Shell and Cinnamon.
