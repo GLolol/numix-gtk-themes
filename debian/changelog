@@ -1,3 +1,10 @@
+numix-gtk-theme (2.5.1+variations2) unstable; urgency=medium
+
+  * Merge upstream Git master as of 10 May 2015.
+     - Add support for LightDM GTK Greeter 2.0.
+
+ -- James Lu <glolol1@hotmail.com>  Sun, 10 May 2015 21:37:34 -0700
+
 numix-gtk-theme (2.5.1+variations1) unstable; urgency=medium
 
   * Import Numix Frost and Numix Frost Light variations.
