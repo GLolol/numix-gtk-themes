@@ -1,6 +1,14 @@
 #!/usr/bin/make -f
-#DH_VERBOSE = 1
+DH_VERBOSE = 1
 DPKG_EXPORT_BUILDFLAGS = 1
 include /usr/share/dpkg/default.mk
 %:
 	dh $@
+
+DESTDIR = debian/tmp
+
+override_dh_auto_build:
+	$(MAKE) -C Numix
+
+override_dh_auto_install:
+	$(MAKE) -C Numix install DESTDIR=$(CURDIR)/debian/numix-gtk-theme
