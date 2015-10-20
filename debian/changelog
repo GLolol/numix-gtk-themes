@@ -1,3 +1,12 @@
+numix-gtk-theme (2015.10.19+variations1) unstable; urgency=medium
+
+  * Update Numix Frost, Numix Frost Light to v2.5.2:
+    - Support for GTK+ 3.18.
+  * Update Numix snapshot to Git master (as of 19 Sep 2015).
+  * debian: add ruby-sass to build-deps, and rules to build Numix proper.
+
+ -- James Lu <bitflip3@gmail.com>  Mon, 19 Oct 2015 19:25:55 -0700
+
 numix-gtk-theme (2.5.1+variations4) unstable; urgency=medium
 
   * Update Numix Frost, Numix, and Numix Frost Light snapshots.
