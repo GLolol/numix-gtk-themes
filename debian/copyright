@@ -3,11 +3,11 @@ Upstream-Name: numix-gtk-theme
 Source: https://github.com/shimmerproject/Numix
 
 Files: *
-Copyright: 2013-2015 The Numix Project <team@numixproject.org>
+Copyright: 2013-2016 The Numix Project <team@numixproject.org>
 License: GPL-3.0+
 
 Files: debian/*
-Copyright: 2015 James Lu <glolol@overdrive.pw>
+Copyright: 2016 James Lu <bitflip3@gmail.com>
 License: GPL-3.0+
 
 License: GPL-3.0+
