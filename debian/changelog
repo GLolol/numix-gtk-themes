@@ -1,5 +1,6 @@
-numix-gtk-theme (2016.05.21~utopia1) unstable; urgency=medium
+numix-frost-theme (2016.05.21~utopia1) unstable; urgency=medium
 
+  * Merge packaging for Numix Frost theme:
   * New upstream snapshot.
   * Split sources into separate trees again.
   * Make package native (Git snapshots lack tarballs).
@@ -10,7 +11,7 @@ numix-gtk-theme (2016.05.21~utopia1) unstable; urgency=medium
   * rules: normalize permissions and remove debian/ folder from installed
     file tree.
 
- -- James Lu <bitflip3@gmail.com>  Sat, 21 May 2016 11:40:52 -0700
+ -- James Lu <bitflip3@gmail.com>  Sat, 21 May 2016 12:12:58 -0700
 
 numix-gtk-themes (2016.04.15+variations1) experimental; urgency=low
 

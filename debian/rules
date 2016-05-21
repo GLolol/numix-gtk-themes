@@ -18,5 +18,5 @@ override_dh_fixperms:
 # Remove extra license files, and the debian/ folder from the installed file tree.
 override_dh_auto_install:
 	dh_auto_install
-	rm -f debian/$(PACKAGE_NAME)/usr/share/themes/Numix/LICENSE
-	rm -rf debian/$(PACKAGE_NAME)/usr/share/themes/Numix/debian
+	rm -f debian/$(PACKAGE_NAME)/usr/share/themes/*/LICENSE
+	rm -rf debian/$(PACKAGE_NAME)/usr/share/themes/*/debian
