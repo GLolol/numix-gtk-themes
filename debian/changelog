@@ -1,6 +1,6 @@
-numix-frost-theme (2016.05.21~utopia1) unstable; urgency=medium
+numix-frost-light-theme (2016.05.21~utopia1) unstable; urgency=medium
 
-  * Merge packaging for Numix Frost theme:
+  * Merge packaging for Numix Frost Light:
   * New upstream snapshot.
   * Split sources into separate trees again.
   * Make package native (Git snapshots lack tarballs).
