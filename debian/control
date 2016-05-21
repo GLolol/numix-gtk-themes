@@ -12,6 +12,7 @@ Vcs-Browser: https://github.com/GLolol/numix-gtk-themes
 Package: numix-frost-theme
 Architecture: all
 Depends: ${misc:Depends}, gtk2-engines-murrine, libgtk-3-0 (>= 3.16)
+Recommends: numix-frost-light-theme
 Description: modern flat GTK+ theme (Antergos edition)
  Numix is a modern flat theme with a combination of light and dark elements. 
  It supports Gnome, Unity, XFCE and Openbox.
