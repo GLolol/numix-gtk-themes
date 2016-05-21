@@ -5,3 +5,12 @@ debian/files
 debian/numix-gtk-theme
 *.substvars
 *.log
+
+# Ignore SASS files
+.sass-cache
+gtk.gresource
+dist
+
+# Jetbrains IDEs
+.idea
+*.iml

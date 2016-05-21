@@ -1,12 +1,12 @@
 Source: numix-gtk-theme
 Section: gnome
 Priority: optional
-Maintainer: James Lu <glolol@overdrive.pw>
+Maintainer: James Lu <bitflip3@gmail.com>
 Build-Depends: debhelper (>= 9)
 Standards-Version: 3.9.6
 Homepage: https://github.com/shimmerproject/Numix
-#Vcs-Git: git://anonscm.debian.org/collab-maint/numix-gtk-theme.git
-#Vcs-Browser: http://anonscm.debian.org/?p=collab-maint/numix-gtk-theme.git;a=summary
+Vcs-Git: https://github.com/GLolol/numix-gtk-themes
+Vcs-Browser: https://github.com/GLolol/numix-gtk-themes
 
 Package: numix-gtk-theme
 Architecture: all
