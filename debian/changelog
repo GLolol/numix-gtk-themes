@@ -1,8 +1,11 @@
 numix-gtk-theme (2015.10.19+variations1~jessie1) jessie; urgency=medium
 
   * Debian Jessie build with GTK+ 3.14 support.
+  * Use hyphens in themes names instead of spaces
+    - Numix Frost -> Numix-Frost
+    - Numix Frost Light -> Numix-Frost-Light
 
- -- James Lu <bitflip3@gmail.com>  Mon, 23 May 2016 13:53:07 -0700
+ -- James Lu <bitflip3@gmail.com>  Mon, 23 May 2016 13:56:02 -0700
 
 numix-gtk-theme (2015.10.19+variations1) unstable; urgency=medium
 
