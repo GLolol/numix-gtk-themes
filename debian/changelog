@@ -1,3 +1,10 @@
+numix-frost-light-theme (2016.05.21~utopia2) unstable; urgency=medium
+
+  * Break numix-frost-theme (<< 2016.05.21~utopia1~) to ease upgrades
+    to the new split packages.
+
+ -- James Lu <bitflip3@gmail.com>  Mon, 30 May 2016 18:32:18 -0700
+
 numix-frost-light-theme (2016.05.21~utopia1) unstable; urgency=medium
 
   * Merge packaging for Numix Frost Light:
