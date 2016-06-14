@@ -1,3 +1,9 @@
+numix-gtk-theme (1:2.6.0+git20160613+5~51713dc~utopia1) unstable; urgency=medium
+
+  * New upstream snapshot.
+
+ -- James Lu <bitflip3@gmail.com>  Mon, 13 Jun 2016 18:13:16 -0700
+
 numix-gtk-theme (2016.05.21~utopia1) unstable; urgency=medium
 
   * New upstream snapshot.
