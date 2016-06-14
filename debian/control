@@ -3,7 +3,7 @@ Section: gnome
 Priority: optional
 Maintainer: James Lu <bitflip3@gmail.com>
 Build-Depends: debhelper (>= 9),
- ruby-sass
+ ruby-sass (>= 3.4.22-1~)
 Standards-Version: 3.9.8
 Homepage: https://github.com/shimmerproject/Numix
 Vcs-Git: https://github.com/GLolol/numix-gtk-themes

@@ -1,3 +1,11 @@
+numix-frost-light-theme (1:3.0.0+git20160613+193~g2db04da~utopia1) unstable; urgency=medium
+
+  * New upstream snapshot.
+  * Bump ruby-sass build-dep version to >= 3.4.22-1~. Older versions seem to
+    FTBFS.
+
+ -- James Lu <bitflip3@gmail.com>  Mon, 13 Jun 2016 18:39:41 -0700
+
 numix-frost-light-theme (2016.05.21~utopia2) unstable; urgency=medium
 
   * Break numix-frost-theme (<< 2016.05.21~utopia1~) to ease upgrades
