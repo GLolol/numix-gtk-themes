@@ -20,3 +20,15 @@ override_dh_auto_install:
 	dh_auto_install
 	rm -f debian/$(PACKAGE_NAME)/usr/share/themes/*/LICENSE
 	rm -rf debian/$(PACKAGE_NAME)/usr/share/themes/*/debian
+
+VERSION = $(shell dpkg-parsechangelog --show-field=Version | cut -f 2 -d ':')
+ORIG_VERSION = $(shell echo $(VERSION) | cut -f 1 -d '-')
+COMMIT = $(shell echo $(ORIG_VERSION) | cut -f 2 -d '~')
+
+get-orig-source:
+	git archive -v $(COMMIT) -o ../$(PACKAGE_NAME)_$(ORIG_VERSION).orig.tar.gz
+
+override_dh_auto_clean:
+	# Remove sass cache so that successive builds work.
+	rm -rf .sass-cache/
+	dh_auto_clean
