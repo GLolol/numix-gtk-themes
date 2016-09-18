@@ -3,15 +3,17 @@ Section: gnome
 Priority: optional
 Maintainer: James Lu <bitflip3@gmail.com>
 Build-Depends: debhelper (>= 9),
- ruby-sass (>= 3.4.22-1~)
+ ruby-sass (>= 3.4.22-1~),
+ libglib2.0-bin,
+ libgdk-pixbuf2.0-dev
 Standards-Version: 3.9.8
-Homepage: https://github.com/shimmerproject/Numix
+Homepage: https://github.com/Antergos/Numix-Frost
 Vcs-Git: https://github.com/utopia-repository/numix-gtk-themes
 Vcs-Browser: https://github.com/utopia-repository/numix-gtk-themes
 
 Package: numix-frost-theme
 Architecture: all
-Depends: ${misc:Depends}, gtk2-engines-murrine, libgtk-3-0 (>= 3.16)
+Depends: ${misc:Depends}, gtk2-engines-murrine, libgtk-3-0 (>= 3.18)
 Recommends: numix-frost-light-theme
 Description: modern flat GTK+ theme (Antergos edition)
  Numix is a modern flat theme with a combination of light and dark elements. 
