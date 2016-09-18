@@ -332,6 +332,15 @@
         }
     }
 
+    &.flat {
+        &:disabled:disabled {
+            background-color: transparent;
+            background-image: none;
+            color: mix($bg, $fg, .5);
+            box-shadow: none;
+        }
+    }
+
     &.separator, .separator {
         border: 1px solid currentColor;
         color: shade($bg, ($contrast + .1));
@@ -373,8 +382,8 @@
         .linked.vertical > & { @include linked_vertical_button(shade($bg_color, 1.2)); }
 
         &.circular { // FIXME: aggregate to buttons
-            border-radius: 20px;
-            -gtk-outline-radius: 20px;
+            border-radius: 9999px; // Fixed: https://github.com/GNOME/gtk/commit/a6409458f0d50d673a4dc370b9251993b7835b6b
+            -gtk-outline-radius: 9999px;
 
             label { padding: 0; }
         }
@@ -457,7 +466,7 @@
 
                 &.down {
                     border-style: none solid solid solid;
-                    border-radius: 0 0 $roundness $roundness; 
+                    border-radius: 0 0 $roundness $roundness;
                 }
             }
         }
@@ -502,5 +511,13 @@
         .linked:not(.vertical) > &:last-child > box > button.combo { @extend %linked_button:last-child; }
 
         .linked:not(.vertical) > &:only-child > box > button.combo { @extend %linked_button:only-child; }
+
+        .linked.vertical > & > box > button.combo { @extend %linked_vertical_middle; }
+
+        .linked.vertical > &:first-child > box > button.combo { @extend %linked_vertical_button:first-child; }
+
+        .linked.vertical > &:last-child > box > button.combo { @extend %linked_vertical_button:last-child; }
+
+        .linked.vertical > &:only-child > box > button.combo { @extend %linked_vertical_button:only-child; }
     }
 }
