@@ -1,3 +1,12 @@
+numix-frost-light-theme (1:3.6.2-light-0utopia1) unstable; urgency=medium
+
+  * New upstream release.
+    - Multiple fixes for GTK+ 3.20.
+  * d/control: refresh URL, build-deps, GTK+ requirements.
+  * d/rules: update get-orig-source rule to work with non-snapshot versions.
+
+ -- James Lu <bitflip3@gmail.com>  Sun, 18 Sep 2016 11:45:46 -0700
+
 numix-frost-light-theme (1:3.0.0+git20160823+200~b25c513-0utopia1) unstable; urgency=medium
 
   * New upstream snapshot.
