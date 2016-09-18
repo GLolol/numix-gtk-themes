@@ -22,8 +22,13 @@ override_dh_auto_install:
 	rm -rf debian/$(PACKAGE_NAME)/usr/share/themes/*/debian
 
 VERSION = $(shell dpkg-parsechangelog --show-field=Version | cut -f 2 -d ':')
-ORIG_VERSION = $(shell echo $(VERSION) | cut -f 1 -d '-')
-COMMIT = $(shell echo $(ORIG_VERSION) | cut -f 2 -d '~')
+ORIG_VERSION = $(shell echo $(VERSION) | sed 's/\(.*\)-.*/\1/')
+
+ifneq (,$(findstring ~,$(ORIG_VERSION)))
+    COMMIT = $(shell echo $(ORIG_VERSION) | cut -f 2 -d '~')
+else
+    COMMIT = $(ORIG_VERSION)
+endif
 
 get-orig-source:
 	git archive -v $(COMMIT) -o ../$(PACKAGE_NAME)_$(ORIG_VERSION).orig.tar.gz
