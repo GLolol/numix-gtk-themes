@@ -52,36 +52,16 @@
                 border-top-right-radius: $roundness;
             }
         }
-
-        &.osd { // progressbar.osd used for epiphany page loading progress
-            margin: 2px;
-            min-height: 2px;
-            min-width: 2px;
-
-            trough {
-                border-style: none;
-                border-radius: 0;
-                background-image: none;
-                background-color: transparent;
-            }
-
-            progress {
-                border-style: none;
-                border-radius: 0;
-                background-color: $selected_bg_color;
-                background-image: none;
-            }
-        }
     }
 
     levelbar {
-        block {
+        &.horizontal block {
             min-width: 34px;
-            min-height: 3px;
+            min-height: 4px;
         }
 
         &.vertical block {
-            min-width: 3px;
+            min-width: 4px;
             min-height: 34px;
         }
 
@@ -92,16 +72,17 @@
 
             border: 1px solid alpha(border_normal($bg_color), .5);
             border-radius: $roundness;
+            padding: 2px; // make discrete block appear inside levelbar
         }
 
         &.horizontal.discrete block {
-            margin: 0 2px;
+            margin: 0 1px;
 
             &:first-child { margin: 0; }
         }
 
         &.vertical.discrete block {
-            margin: 2px 0;
+            margin: 1px 0;
 
             &:first-child { margin: 0; }
         }
@@ -110,7 +91,7 @@
             @include linear-gradient($selected_bg_color);
 
             border-color: transparent;
-            border-radius: 0;
+            border-radius: $roundness;
 
             &.low {
                 background-color: $warning_color;
@@ -119,12 +100,12 @@
 
             &.high,
             &:not(.empty) {
-                background-color: $selected_bg_color;
+                background-color: $success_color;
                 border-color: transparent;
             }
 
             &.full {
-                background-color: $success_color;
+                background-color: shade($selected_bg_color, .8);
                 border-color: transparent;
             }
 
@@ -192,13 +173,6 @@
             background-color: $_scale_trough_bg;
 
             &:disabled { background-color: transparentize($_scale_trough_bg, .45); }
-
-            //OSD troughs
-            .osd & {
-                background-color: lighten($osd_bg, 7%);
-
-                highlight { background-color: $selected_bg_color; }
-            }
 
             // Troughs in selected list-rows and infobars
             menuitem:hover &,
@@ -277,23 +251,6 @@
                 &:disabled {
                     background-color: mix($selected_fg_color, $selected_bg_color, .55);
                     border-color: mix($selected_fg_color, $selected_bg_color, .55);
-                }
-            }
-
-            // OSD sliders
-            .osd & {
-                background-clip: border-box;
-                background-color: $selected_bg_color;
-                border-color: $selected_bg_color;
-
-                &:hover {
-                    background-color: lighten($selected_bg_color, 10%);
-                    border-color: lighten($selected_bg_color, 10%)
-                }
-
-                &:active {
-                    background-color: darken($selected_bg_color, 10%);
-                    border-color: darken($selected_bg_color, 10%);
                 }
             }
         }

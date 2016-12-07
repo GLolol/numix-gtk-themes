@@ -42,10 +42,12 @@
 *******/
 
 @include exports("menu") {
-    menu, .menu {
-        padding: 0;
-        border-radius: 0;
+    menu,
+    .menu,
+    .context-menu {
         border: 0;
+        border-radius: 0;
+        padding: 2px 0;
         background-color: $menu_bg_color;
         color: $menu_fg_color;
 
@@ -114,14 +116,34 @@
             }
 
             calendar {
-                &:indeterminate { color: mix($menu_fg_color, $menu_bg_color, .5); }
+                color: $menu_fg_color;
 
-                .button {
-                    border-style: none;
-                    background-color: transparent;
-                    background-image: none;
+                &.header {
+                    border-bottom: 1px solid shade($menu_bg_color, ($contrast + .1));
+                    border-radius: 0;
+
+                    &:backdrop { border-color: shade($menu_bg_color, ($contrast + .1)); }
                 }
+
+                &.button {
+                    @extend %undecorated_button;
+
+                    color: alpha($menu_fg_color, .55);
+
+                    &:hover {
+                        @extend %undecorated_button;
+
+                        color: $menu_fg_color;
+                    }
+                }
+
+                &:indeterminate,
+                &:indeterminate:backdrop { color: mix($menu_fg_color, $menu_bg_color, .5); }
             }
+
+            // avoids labels color being overridden, see
+            // https://bugzilla.gnome.org/show_bug.cgi?id=767058
+            label { &:dir(rtl), &:dir(ltr) { color: inherit; } }
         }
 
         // overflow arrows
@@ -158,7 +180,9 @@
         }
     }
 
-    .context-menu { font: initial; }
+    .context-menu { font: initial; } // Decouple the font of context menus from their entry/textview
+
+    .monospace { font-family: monospace; }
 
     menuitem {
         accelerator {
@@ -209,17 +233,6 @@
 
         &:backdrop { box-shadow: none; }
 
-        .osd & {
-            box-shadow: 0 2px 7px 3px alpha($black, .5);
-
-            > toolbar button {
-                border-radius: 0;
-                border-width: 0;
-                background-color: transparent;
-                background-image: none;
-            }
-        }
-
         treeview.view {
             &:hover, &:selected, &:selected:focus, &:backdrop:selected, &:backdrop:selected:focus { border-top-color: $selected_bg_color; }
 
@@ -260,9 +273,9 @@
             border-radius: $roundness;
         }
 
-        entry { @include entry($menu_bg_color, $menu_fg_color);  }
+        entry { @include entry($menu_bg_color, $menu_fg_color); }
 
-        button { @include button($menu_bg_color, $menu_fg_color);  }
+        button { @include button($menu_bg_color, $menu_fg_color); }
 
         > list, > .view, > toolbar {
             border-style: none;
@@ -270,36 +283,34 @@
         }
     }
 
-    modelbutton {
+    modelbutton.flat,
+    menuitem.button.flat {
         padding: $spacing ($spacing + 2px);
-        border: none;
-        transition: 150ms ease;
         outline-color: transparent;
+        transition: none;
 
-        &, &:backdrop, &.flat, &.flat:backdrop {
-            //@extend %undecorated_button;
+        @extend %undecorated_button;
 
-            &:hover { background-color: $selected_bg_color; color: $selected_fg_color }
-            &:active, &:selected { &, arrow { @extend %selected_items; } }
-            &:checked { color: $fg_color; }
-
-            // FIXME: temporary workaround
-            check:last-child,
-            radio:last-child { margin-left: 8px; }
-
-            check:first-child,
-            radio:first-child { margin-right: 8px; }
-
-            &.flat arrow {
-                &.left { -gtk-icon-source: -gtk-icontheme("pan-start-symbolic"); }
-                &.right { -gtk-icon-source: -gtk-icontheme("pan-end-symbolic"); }
-            }
+        &:hover {
+            background-color: $selected_bg_color;
+            color: $selected_fg_color;
         }
 
-        &.flat {
-            &, &:hover {
-                transition: none;
-            }
+        &:active, &:selected { &, arrow { @extend %selected_items; } }
+
+        &:checked { color: $fg_color; }
+
+        arrow {
+            &.left { -gtk-icon-source: -gtk-icontheme("pan-start-symbolic"); }
+
+            &.right { -gtk-icon-source: -gtk-icontheme("pan-end-symbolic"); }
         }
+
+        // FIXME: temporary workaround
+        check:last-child,
+        radio:last-child { margin-left: 8px; }
+
+        check:first-child,
+        radio:first-child { margin-right: 8px; }
     }
 }

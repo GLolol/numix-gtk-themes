@@ -5,6 +5,7 @@ do_install() {
 	INSTALL_DIR="$1"
 	GTKDIR="${INSTALL_DIR}/gtk-3.0"
 	GTK320DIR="${INSTALL_DIR}/gtk-3.20"
+	PIXMAPS_DIR="${INSTALL_DIR}/../../pixmaps"
 
 	install -dm755 "${INSTALL_DIR}"
 
@@ -12,23 +13,26 @@ do_install() {
 
 	cp index.theme "${INSTALL_DIR}"
 
+	cp -rt "${INSTALL_DIR}" \
+			assets gtk-2.0 metacity-1 openbox-3 xfce-notify-4.0 xfwm4
+
+	mkdir -p "${PIXMAPS_DIR}"
+	cp assets/nfl-***.svg "${PIXMAPS_DIR}"
+
 	for _DIR in "${GTKDIR}" "${GTK320DIR}"
 	do
 		GTKVER="${_DIR##*/}"
 
-		mkdir "${_DIR}"
+		mkdir -p "${_DIR}"
 
-		cp --preserve=links -rt "${INSTALL_DIR}" \
-			assets gtk-2.0 metacity-1 openbox-3 xfce-notify-4.0 xfwm4 unity
-
-		cp --preserve=links -t "${_DIR}" \
+		cp -t "${_DIR}" \
 			"${GTKVER}/gtk.css" \
 			"${GTKVER}/gtk-dark.css" \
 			"${GTKVER}/gtk.gresource" \
 			"${GTKVER}/thumbnail.png"
 
 		cd "${_DIR}"
-		ln -sr ../assets assets
+		ln -srf ../assets assets
 		cd -
 	done
 }
@@ -48,16 +52,40 @@ output_changes_file_version_marker() {
 
 
 update_changes_file() {
-	local LATEST_STABLE_RELEASE
-	LATEST_STABLE_RELEASE=$(git describe --abbrev=0 --tags)
+	LAST_STABLE_RELEASE=$(git describe --abbrev=0 --tags $(git rev-list --tags --max-count=1))
+	LAST_MAJOR_MINOR="${LAST_STABLE_RELEASE%.*}"
+
+	LAST_MAJOR="${LAST_STABLE_RELEASE%%.*}"
+	LAST_MINOR="${LAST_MAJOR_MINOR#*.}"
+	LAST_PATCH="${LAST_STABLE_RELEASE##*.}"
+
+	case "${PWD##*/}" in
+		Numix)
+			NEXT_PATCH=$(($LAST_PATCH + 1))
+
+			NEXT_STABLE_RELEASE="${LAST_MAJOR_MINOR}.${NEXT_PATCH}"
+		;;
+
+		Numix-Frost)
+			LAST_MAJOR=$(($LAST_MAJOR + 1))
+			NEXT_STABLE_RELEASE="${LAST_MAJOR}.${LAST_MINOR}.${LAST_PATCH}"
+			LAST_PATCH=$(($LAST_PATCH - 1))
+
+			LAST_STABLE_RELEASE="${LAST_MAJOR}.${LAST_MINOR}.${LAST_PATCH}"
+		;;
+
+		*)
+			echo 'Unknown directory!' && exit 1
+		;;
+	esac
 
 	[[ -f CHANGES ]] && mv CHANGES CHANGES.old
 
-	output_changes_file_version_marker "${LATEST_STABLE_RELEASE}" > CHANGES
+	output_changes_file_version_marker "${NEXT_STABLE_RELEASE}" > CHANGES
 
 	{ git log \
 		--pretty=format:"[%ai] %<(69,trunc) %s %><(15) %aN {%h}" \
-		--cherry-pick "${LATEST_STABLE_RELEASE}...HEAD"; } >> CHANGES
+		--cherry-pick "${LAST_STABLE_RELEASE}...HEAD"; } >> CHANGES
 
 
 	[[ -f CHANGES.old ]] && echo "" >> CHANGES && cat CHANGES.old >> CHANGES && rm CHANGES.old

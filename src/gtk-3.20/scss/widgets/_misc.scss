@@ -165,7 +165,7 @@
             border-top-left-radius: 0;
         }
 
-        .button {
+        button {
             border: 0;
             background-color: transparent;
             background-image: none;
@@ -231,13 +231,18 @@
 ********************/
 
 @include exports("gnome-bluetooth") {
+    // Base code: https://github.com/GNOME/gnome-bluetooth/blob/a93575c4b590e2b831da32f739294bb2f197d420/lib/bluetooth-settings.css
     entry.entry.pin-entry {
-        font: regular 50;
-        padding-left: 25px;
-        padding-right: 25px;
+        font-style: normal;
+        font-size: 50px;
+        padding-left: $spacing * 5;
+        padding-right: $spacing * 5;
     }
 
-    label.pin-label { font: regular 50; }
+    label.pin-label {
+        font-style: normal;
+        font-size: 50px;
+    }
 }
 
 
