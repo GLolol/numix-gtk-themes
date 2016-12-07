@@ -5,6 +5,7 @@
 .sass-cache
 gtk.gresource
 dist
+!src/desktops/cinnamon/dist
 
 # Jetbrains
 .idea

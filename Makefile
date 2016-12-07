@@ -1,55 +1,47 @@
-SASS=scss
-SASSFLAGS=--sourcemap=none
-GLIB_COMPILE_RESOURCES=glib-compile-resources
-RES_DIR=src/gtk-3.0
-SCSS_DIR=$(RES_DIR)/scss
-DIST_DIR=$(RES_DIR)/dist
-RES_DIR320=src/gtk-3.20
-SCSS_DIR320=$(RES_DIR320)/scss
-DIST_DIR320=$(RES_DIR320)/dist
-INSTALL_DIR=$(DESTDIR)/usr/share/themes/Numix-Frost
-UTILS=scripts/utils.sh
+THIS:=$(realpath $(lastword $(MAKEFILE_LIST)))
+REPO_ROOT_DIR:=$(dir $(THIS))
+UTILS:=$(realpath $(REPO_ROOT_DIR)/scripts/utils.sh)
+INSTALL_DIR:=$(DESTDIR)/usr/share/themes
 
-all: clean gresource
 
-css:
-	$(SASS) --update $(SASSFLAGS) $(SCSS_DIR):$(DIST_DIR)
-	$(SASS) --update $(SASSFLAGS) $(SCSS_DIR320):$(DIST_DIR320)
-
-gresource: css
-	$(GLIB_COMPILE_RESOURCES) --sourcedir=$(RES_DIR) $(RES_DIR)/gtk.gresource.xml
-	$(GLIB_COMPILE_RESOURCES) --sourcedir=$(RES_DIR320) $(RES_DIR320)/gtk.gresource.xml
-
-watch: clean
-	while true; do \
-		make gresource; \
-		inotifywait @gtk.gresource -qr -e modify -e create -e delete $(RES_DIR); \
-	done
-
-clean:
-	rm -rf $(DIST_DIR)
-	rm -f $(RES_DIR)/gtk.gresource
-	rm -rf $(DIST_DIR320)
-	rm -f $(RES_DIR320)/gtk.gresource
-
-install: all
-	$(UTILS) install $(INSTALL_DIR)
-
-uninstall:
-	rm -rf $(INSTALL_DIR)
+all: gresource
 
 changes:
-	$(UTILS) changes
+	$(UTILS) changes $(REPO_ROOT_DIR)
+
+clean:
+	$(UTILS) clean $(REPO_ROOT_DIR)
+
+create-dist:
+	$(UTILS) create-dist $(REPO_ROOT_DIR)
+
+css: clean create-dist
+	$(UTILS) css $(REPO_ROOT_DIR)
+
+_gresource: css
+	$(UTILS) gresource $(REPO_ROOT_DIR)
+
+gresource: _gresource remove-scss-dist
+
+_install:
+	$(UTILS) install $(REPO_ROOT_DIR) $(INSTALL_DIR)
+
+install: all _install
+
+remove-scss-dist:
+	$(UTILS) remove-scss-dist $(REPO_ROOT_DIR)
+
+uninstall:
+	$(UTILS) uninstall $(REPO_ROOT_DIR) $(INSTALL_DIR)
+
+zip: all
+	mkdir $(REPO_ROOT_DIR)/dist
+	$(UTILS) install $(REPO_ROOT_DIR)/dist/$$(basename $(INSTALL_DIR))
+	cd $(REPO_ROOT_DIR)/dist && zip --symlinks -rq $$(basename $(INSTALL_DIR)) $$(basename $(INSTALL_DIR))
 
 
-.PHONY: all
-.PHONY: css
-.PHONY: watch
-.PHONY: gresource
-.PHONY: clean
-.PHONY: install
-.PHONY: uninstall
-.PHONY: changes
+.PHONY: all changes clean create-dist css _gresource gresource
+.PHONY: _install install remove-scss-dist watch uninstall zip
 
 .DEFAULT_GOAL := all
 
