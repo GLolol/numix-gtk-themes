@@ -1,3 +1,11 @@
+numix-frost-theme (1:3.6.6+git14~e9d2507-0utopia1) unstable; urgency=medium
+
+   * New upstream snapshot.
+     - Fixes for Budgie desktop, Xfce, GTK+ 3.20, Cinnamon 3.2+, and many
+       more.
+
+ -- James Lu <bitflip3@gmail.com>  Tue, 06 Dec 2016 17:00:26 -0800
+
 numix-frost-theme (1:3.6.4-0utopia1) unstable; urgency=medium
 
   * New upstream release.
