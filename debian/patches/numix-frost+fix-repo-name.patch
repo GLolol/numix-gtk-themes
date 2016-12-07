@@ -1,0 +1,18 @@
+Subject: Remove dynamic repo name detection (Numix Frost branch)
+Author: James Lu <bitflip3@gmail.com>
+Forwarded: not-needed
+Last-Update: 2016-12-06
+
+Index: numix-gtk-themes/scripts/utils.sh
+===================================================================
+--- numix-gtk-themes.orig/scripts/utils.sh	2016-12-06 17:12:16.931335527 -0800
++++ numix-gtk-themes/scripts/utils.sh	2016-12-06 17:12:52.690639132 -0800
+@@ -27,7 +27,7 @@
+ _initialize_variables() {
+ 	REPO_ROOT="${1::-1}"
+ 	DEST_DIR="$2"
+-	REPO_NAME=$(basename "${REPO_ROOT}")
++	REPO_NAME='Numix-Frost'
+ 
+ 	DIST_DIR="${REPO_ROOT}/dist/${REPO_NAME}"
+ 	INSTALL_DIR="${DEST_DIR}/${REPO_NAME}"
